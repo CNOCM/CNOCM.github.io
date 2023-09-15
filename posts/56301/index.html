@@ -41,11 +41,11 @@
 <meta property="og:title" content="OpenWrt 定时关闭 LED 灯">
 <meta property="og:url" content="https://cnocm.github.io/posts/56301/index.html">
 <meta property="og:site_name" content="CNOCM">
-<meta property="og:description" content="OpenWrt 定时关闭 LED 灯前段时间，为了解决校园网限制设备的问题。入手了一个Xiaomi Mi Router 3G，到手后立马刷入了 OpenWRT ，并设置了自动认证和防检测。 然而到了第一天晚上就发现一个问题：寝室熄灯后LED灯太亮，正困的时候，灯光直射你的眼睛，你还睡不睡。 无解，便开始寻找解决方案，能不能关掉着破灯：白天亮起，晚上熄灭。 找到了脚本，LED 由 &#x2F;sys&#x2F;clas">
+<meta property="og:description" content="前段时间，为了解决校园网限制设备的问题。入手了一个Xiaomi Mi Router 3G，到手后立马刷入了 OpenWRT ，并设置了自动认证和防检测。 然而到了第一天晚上就发现一个问题：寝室熄灯后LED灯太亮，正困的时候，灯光直射你的眼睛，你还睡不睡。 无解，便开始寻找解决方案，能不能关掉着破灯：白天亮起，晚上熄灭。 找到了脚本，LED 由 &#x2F;sys&#x2F;class&#x2F;leds 目录下的配置文件控制，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-09-06T04:11:55.000Z">
-<meta property="article:modified_time" content="2023-09-06T04:40:04.184Z">
+<meta property="article:modified_time" content="2023-09-10T15:13:28.535Z">
 <meta property="article:author" content="CNOCM">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1791,7 +1791,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1693975246947),
+    lastupdate: new Date(1694758817069),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["toc"],
@@ -2635,6 +2635,36 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
 
 
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：652 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：2 分钟</p>
+    </a>
+  </div>
+
 
           
         
@@ -2648,7 +2678,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="OpenWrt-定时关闭-LED-灯"><a href="#OpenWrt-定时关闭-LED-灯" class="headerlink" title="OpenWrt 定时关闭 LED 灯"></a>OpenWrt 定时关闭 LED 灯</h1><p>前段时间，为了解决校园网限制设备的问题。入手了一个Xiaomi Mi Router 3G，到手后立马刷入了 OpenWRT ，并设置了自动认证和防检测。</p>
+    <p>前段时间，为了解决校园网限制设备的问题。入手了一个Xiaomi Mi Router 3G，到手后立马刷入了 OpenWRT ，并设置了自动认证和防检测。</p>
 <p>然而到了第一天晚上就发现一个问题：寝室熄灯后LED灯太亮，正困的时候，灯光直射你的眼睛，你还睡不睡。</p>
 <p>无解，便开始寻找解决方案，能不能关掉着破灯：白天亮起，晚上熄灭。</p>
 <p>找到了脚本，LED 由 <code>/sys/class/leds</code> 目录下的配置文件控制，写入不同的值来控制 LED 灯的点亮和熄灭，<code>0</code> 值为关闭，<code>3</code> 为开启，写入立即生效。</p>
@@ -2667,7 +2697,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>给它个执行权限，然后执行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x /etc/off_WIFI.sh</span><br><span class="line">/etc/off_WIFI.sh</span><br></pre></td></tr></table></figure>
 <p>再将它加入定时任务，LED 灯开启可以通过初始化 LED 的脚本实现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁用WIFI 每晚23:30</span><br><span class="line">30 23 * * * /etc/off_WIFI.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁用WIFI 每晚23:10</span><br><span class="line">10 23 * * * /etc/off_WIFI.sh</span><br></pre></td></tr></table></figure>
 <p>最后再使用自动重启功能，定为早晨6点（校园网6点开启）。</p>
 <p>体验非常舒适，晚上再也没有瞎眼的灯了，也不用我关闭手机WIFI了，第二天起床也能自动连接。</p>
 
@@ -2711,10 +2741,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-06T12:40:04+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-10T23:13:28+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年9月6日</p>
+    <p>更新于：2023年9月10日</p>
   </a>
 </div>
 
@@ -2743,6 +2773,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
+
+
+        
+      
+        
+          
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：652 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：2 分钟</p>
+    </a>
+  </div>
 
 
         
@@ -2812,19 +2860,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
-    
-  <header>
-    
-      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        
-    </div>
-  </section>
+  <div class="">
+    <!-- pjax占位 -->
+  </div>
 
   
 
@@ -2941,7 +2979,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         本站使用
         <a href="https://github.com/volantis-x/hexo-theme-volantis/#5.8.0" target="_blank" class="codename">Volantis</a>
-        作为主题
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
       
     
       
@@ -3247,6 +3288,8 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
+  <script defer src="https://unpkg.com/volantis-static@0.0.1654736714924/libs/busuanzi/js/busuanzi.pure.mini.js" data-pjax></script>
+
 
 <!-- optional -->
 
@@ -3507,7 +3550,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"CNOCM","url":"https://cnocm.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"CNOCM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://cnocm.github.io/","sameAs":["https://github.com/volantis-x"],"description":"宁静致远"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://cnocm.github.io/","name":"CNOCM"}},{"@type":"ListItem","position":3,"item":{"@id":"https://cnocm.github.io/posts/56301/","name":"OpenWrt 定时关闭 LED 灯"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"CNOCM","url":"https://cnocm.github.io/","keywords":null,"description":"宁静致远","author":{"@type":"Person","name":"CNOCM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://cnocm.github.io/","description":"宁静致远"},"publisher":{"@type":"Organization","name":"CNOCM","url":"https://cnocm.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://cnocm.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"OpenWrt 定时关闭 LED 灯","description":"宁静致远","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://cnocm.github.io/posts/56301/"},"author":{"@type":"Person","name":"CNOCM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://cnocm.github.io/"},"publisher":{"@type":"Organization","name":"CNOCM","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://cnocm.github.io/posts/56301/","wordCount":0,"datePublished":"2023-09-06T04:11:55.000Z","dateModified":"2023-09-06T04:40:04.184Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"CNOCM","url":"https://cnocm.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"CNOCM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://cnocm.github.io/","sameAs":["https://github.com/volantis-x"],"description":"宁静致远"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://cnocm.github.io/","name":"CNOCM"}},{"@type":"ListItem","position":3,"item":{"@id":"https://cnocm.github.io/posts/56301/","name":"OpenWrt 定时关闭 LED 灯"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"CNOCM","url":"https://cnocm.github.io/","keywords":null,"description":"宁静致远","author":{"@type":"Person","name":"CNOCM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://cnocm.github.io/","description":"宁静致远"},"publisher":{"@type":"Organization","name":"CNOCM","url":"https://cnocm.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://cnocm.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"OpenWrt 定时关闭 LED 灯","description":"宁静致远","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://cnocm.github.io/posts/56301/"},"author":{"@type":"Person","name":"CNOCM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://cnocm.github.io/"},"publisher":{"@type":"Organization","name":"CNOCM","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://cnocm.github.io/posts/56301/","wordCount":0,"datePublished":"2023-09-06T04:11:55.000Z","dateModified":"2023-09-10T15:13:28.535Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
